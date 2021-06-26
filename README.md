@@ -7,7 +7,7 @@ A desktop interface for ODIN, my centralized GPT-2 web API.
 
 ODIN is primarily a Flask RPC API. Token-based authentication is available to ensure only certain users can perform text generation. Adding neural networks to the API is as simple as dragging and dropping into the models folder. There is also a command-line tool to be able to quickly and locally test or use the core ODIN logic without having to go through the web API.
 
-### Vue commands
+## Vue commands
 ```bash
 # Setup project
 npm install
