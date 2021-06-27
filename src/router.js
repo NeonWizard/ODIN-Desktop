@@ -14,7 +14,6 @@ const routes = [
 	{
 		path: '/login',
 		name: 'Login',
-		meta: { title: 'Login' },
 		component: () => import('@/views/Login.vue')
 	}
 ]
@@ -30,7 +29,7 @@ const router = new VueRouter({
 router.beforeEach(async (to, from, next) => {
 	const loggedIn = false
 
-	window.document.title = to.meta.title ?? 'ODIN Web'
+	window.document.title = 'ODIN Desktop'
 
 	if (to.matched.some((record) => record.meta.requiresAuth)) {
 		// If accessing a protected route but not logged in, redirect to /login
