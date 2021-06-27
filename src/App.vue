@@ -14,16 +14,19 @@ export default {
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+  html {
+    height: 100%;
+  }
+
   body {
     background-color: #262627;
+    margin: 0;
   }
+
   #app {
-    /* font-family: Avenir, Helvetica, Arial, sans-serif; */
     font-family: "Open Sans";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #ddd;
-    margin-top: 60px;
+    height: 100vh;
   }
 </style>
