@@ -20,6 +20,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "eslint-plugin-vue-scoped-css": "^1.2.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
@@ -37,16 +38,30 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": true,
+      "browser": true,
+      "es2020": true
     },
+    "plugins": [
+      "vue"
+    ],
     "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "plugin:vue/recommended",
+      "plugin:vue-scoped-css/recommended"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "vue/attribute-hyphenation": "off",
+      "vue/max-attributes-per-line": [
+        "warn",
+        {
+          "singleline": 3
+        }
+      ]
+    }
   },
   "browserslist": [
     "> 1%",
