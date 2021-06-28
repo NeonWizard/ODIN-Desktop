@@ -92,8 +92,24 @@ export default {
 
       this.loading = true
 
-      await new Promise(resolve => { setTimeout(resolve, 600) })
-      this.$message.error('Login failure.')
+      await new Promise(resolve => { setTimeout(resolve, 300) }) // eye candy
+      const error = await this.$store.dispatch('auth/login', {
+        username: this.model.username,
+        password: this.model.password
+      })
+
+      if (error) {
+        this.$message.error(error)
+      } else {
+        this.$message.success('Logged in successfully.')
+        setTimeout(() => {
+          if (this.$route.query?.redirect) {
+            this.$router.push({ path: this.$route.query.redirect })
+          } else {
+            this.$router.push({ name: 'Home' })
+          }
+        }, 1500)
+      }
 
       this.loading = false
     }
