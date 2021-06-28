@@ -122,6 +122,7 @@ export default {
     align-items: center;
     height: 100%;
     text-align: center;
+    background-color: #262627;
   }
 
   .login-card {

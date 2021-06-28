@@ -19,7 +19,6 @@ export default {
   }
 
   body {
-    background-color: #262627;
     margin: 0;
   }
 
