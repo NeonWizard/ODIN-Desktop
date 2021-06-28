@@ -1,5 +1,5 @@
 # ODIN-desktop
-![GitHub package.json version](https://img.shields.io/github/package-json/v/NeonWizard/ODIN-Desktop)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/NeonWizard/ODIN-Desktop?color=blue)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/NeonWizard/ODIN-Desktop/Lint%20and%20Test)
 ![GitHub Repo stars](https://img.shields.io/github/stars/neonwizard/odin?style=social)
 
