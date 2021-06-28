@@ -6,6 +6,6 @@ export const createAxiosInstance = token => axios.create({
   baseURL: baseURL,
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer: ${token}`
+    'X-API-KEY': token
   }
 })
