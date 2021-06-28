@@ -24,6 +24,7 @@
             class="login-input"
             placeholder="Password"
             prefix-icon="el-icon-lock"
+            show-password
           />
         </el-form-item>
 
