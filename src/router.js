@@ -9,14 +9,19 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     meta: { requiresAuth: true },
     component: () => import('@/views/Home.vue')
   },
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     component: () => import('@/views/Login.vue')
+  },
+  {
+    path: '*',
+    name: 'not-found',
+    redirect: '/'
   }
 ]
 // -- End of Routes
