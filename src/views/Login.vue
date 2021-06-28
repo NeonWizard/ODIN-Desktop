@@ -101,14 +101,11 @@ export default {
       if (error) {
         this.$message.error(error)
       } else {
-        this.$message.success('Logged in successfully.')
-        setTimeout(() => {
-          if (this.$route.query?.redirect) {
-            this.$router.push({ path: this.$route.query.redirect })
-          } else {
-            this.$router.push({ name: 'Home' })
-          }
-        }, 1500)
+        if (this.$route.query?.redirect) {
+          this.$router.push({ path: this.$route.query.redirect })
+        } else {
+          this.$router.push({ name: 'Home' })
+        }
       }
 
       this.loading = false
