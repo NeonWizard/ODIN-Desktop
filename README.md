@@ -1,6 +1,6 @@
 # ODIN-desktop
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/NeonWizard/ODIN-Desktop)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/NeonWizard/ODIN-Desktop/Unit%20Testing)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/NeonWizard/ODIN-Desktop/Lint%20and%20Test)
 ![GitHub Repo stars](https://img.shields.io/github/stars/neonwizard/odin?style=social)
 
 A desktop interface for ODIN, my centralized GPT-2 web API.
