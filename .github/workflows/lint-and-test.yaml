@@ -1,0 +1,72 @@
+name: Lint and Test
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+env:
+  NODE_VERSION: 14.x
+  SERVICE_NAME: odin-desktop
+
+jobs:
+  linting:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Cache node modules
+        id: node-cache
+        uses: actions/cache@v2
+        env:
+          cache-name: ${{ env.SERVICE_NAME }}-cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ env.cache-name }}-
+
+      - name: Install dependencies
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Run ESLint
+        run: npm run lint
+
+  # testing:
+  #   name: Testing
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ env.NODE_VERSION }}
+
+  #     - name: Cache node modules
+  #       id: node-cache
+  #       uses: actions/cache@v2
+  #       env:
+  #         cache-name: ${{ env.SERVICE_NAME }}-cache-node-modules
+  #       with:
+  #         path: node_modules
+  #         key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-${{ env.cache-name }}-
+
+  #     - name: Install dependencies
+  #       if: steps.node-cache.outputs.cache-hit != 'true'
+  #       run: npm install
+
+  #     - name: Run Unit Tests
+  #       run: npm run test:unit
