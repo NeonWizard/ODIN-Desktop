@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'browser-wrapper': !isElectron}">
+  <div class="browser-wrapper" :class="{'browser-wrapper-web': !isElectron}">
     <div id="home-page" :class="{'home-page-web': !isElectron}">
       <Header />
       <div id="app-body">
@@ -35,9 +35,11 @@ export default {
 
 <style lang="scss" scoped>
   .browser-wrapper {
+    height: 100%;
+  }
+  .browser-wrapper-web {
     box-sizing: border-box;
     padding: 70px 130px;
-    height: 100%;
     background-color: #23272a;
   }
   #home-page {
