@@ -11,8 +11,9 @@ export default {
 }
 </script>
 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+<style lang="scss">
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+  @import '@/assets/css/variables.scss';
 
   html {
     height: 100%;
@@ -23,7 +24,7 @@ export default {
   }
 
   #app {
-    font-family: "Open Sans";
+    font-family: "Montserrat";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 100vh;

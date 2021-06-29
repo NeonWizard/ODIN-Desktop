@@ -116,6 +116,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
   .login-page {
     display: flex;
     justify-content: center;
@@ -123,6 +125,7 @@ export default {
     height: 100%;
     text-align: center;
     background-color: #262627;
+    font-family: "Open Sans";
   }
 
   .login-card {
