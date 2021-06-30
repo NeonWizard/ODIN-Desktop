@@ -1,13 +1,28 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view v-if="serverOnline" />
+    <AppOutage v-else />
   </div>
 </template>
 
 <script>
+import AppOutage from '@/views/AppOutage.vue'
+
+import { mapState } from 'vuex'
+
 export default {
   name: 'App',
-  components: {}
+  components: {
+    AppOutage
+  },
+  computed: {
+    ...mapState('common', [
+      'serverOnline'
+    ])
+  },
+  async created() {
+    await this.$store.dispatch('common/fetchServerStatus')
+  }
 }
 </script>
 
