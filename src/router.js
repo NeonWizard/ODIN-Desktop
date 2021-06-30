@@ -7,12 +7,33 @@ Vue.use(VueRouter)
 
 // -- Routes
 const routes = [
+  // -- Main App Routes --
   {
-    path: '/home',
-    name: 'home',
+    path: '/',
+    name: 'Main',
     meta: { requiresAuth: true },
-    component: () => import('@/views/Home.vue')
+    component: () => import('@/views/main/Main.vue'),
+    redirect: '/home',
+    children: [
+      {
+        path: 'home',
+        name: 'home',
+        component: () => import('@/views/main/Home.vue')
+      },
+      {
+        path: 'settings',
+        name: 'settings',
+        component: () => import('@/views/main/Settings.vue')
+      },
+      {
+        path: 'help',
+        name: 'help',
+        component: () => import('@/views/main/Help.vue')
+      }
+    ]
   },
+
+  // -- Unparented Routes --
   {
     path: '/login',
     name: 'login',
@@ -48,10 +69,10 @@ router.beforeEach(async (to, from, next) => {
       })
     }
   } else {
-    // If logged in and trying to access /login, redirect to root
+    // If logged in and trying to access /login, redirect to home
     if (loggedIn && to.path === '/login') {
       next({
-        path: '/'
+        path: '/home'
       })
     } else {
       next()

@@ -5,15 +5,27 @@
       <!-- Center -->
       <el-col id="link-nav" :span="20">
         <div class="grid-content">
-          <el-link class="link-nav-link" href="/" type="info">
+          <a
+            class="link-nav-link"
+            :class="{ 'link-nav-link-selected': $route.path === '/home' }"
+            @click="$router.push('/home')"
+          >
             Home
-          </el-link>
-          <el-link class="link-nav-link" href="/" type="info">
+          </a>
+          <a
+            class="link-nav-link"
+            :class="{ 'link-nav-link-selected': $route.path === '/settings' }"
+            @click="$router.push('/settings')"
+          >
             Settings
-          </el-link>
-          <el-link class="link-nav-link" href="/" type="info">
+          </a>
+          <a
+            class="link-nav-link"
+            :class="{ 'link-nav-link-selected': $route.path === '/help' }"
+            @click="$router.push('/help')"
+          >
             Help
-          </el-link>
+          </a>
         </div>
       </el-col>
 
@@ -67,12 +79,17 @@ export default {
     }
 
     #link-nav {
-      margin-left: 25px;
+      margin-left: 35px;
 
       .link-nav-link {
         margin-right: 50px;
         font-weight: bold;
         font-size: 1.1em;
+        cursor: pointer;
+        color: $secondary-color;
+      }
+      .link-nav-link-selected {
+        color: $primary-color;
       }
     }
 
