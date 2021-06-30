@@ -61,7 +61,7 @@ export default {
     align-items: center;
     background-color: #1c1d1e;
     border-radius: 20px 20px 0 0;
-    padding: 18px 20px;
+    padding: 18px 30px;
   }
 
   .app-info {
@@ -79,12 +79,12 @@ export default {
     }
 
     #link-nav {
-      margin-left: 35px;
+      margin-left: 40px;
 
       .link-nav-link {
         margin-right: 50px;
         font-weight: bold;
-        font-size: 1.1em;
+        font-size: 1.15em;
         cursor: pointer;
         color: $secondary-color;
       }

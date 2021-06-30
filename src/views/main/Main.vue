@@ -1,6 +1,6 @@
 <template>
-  <div class="browser-wrapper" :class="{'browser-wrapper-web': !isElectron}">
-    <div id="home-page" :class="{'home-page-web': !isElectron}">
+  <div id="wrapper" :class="{'browser-wrapper': !isElectron}">
+    <div id="app-page" :class="{'app-page-web': !isElectron}">
       <Header />
       <transition name="fade" mode="out-in">
         <router-view id="app-body" />
@@ -34,17 +34,17 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-  // Electron vs Web stuff
-  .browser-wrapper-web {
+  // -- Electron vs Web stuff
+  .browser-wrapper {
     box-sizing: border-box;
     padding: 70px 130px;
     background-color: #272a2e;
   }
-  .home-page-web {
+  .app-page-web {
     border-radius: 20px;
   }
 
-  // Transitions
+  // -- Transitions
   .fade-enter-active, .fade-leave-active {
     transition: opacity 0.1s;
   }
@@ -54,11 +54,11 @@ export default {
 
   // -----
 
-  .browser-wrapper {
+  #wrapper {
     height: 100%;
   }
 
-  #home-page {
+  #app-page {
     display: flex;
     flex-direction: column;
     height: 100%;
