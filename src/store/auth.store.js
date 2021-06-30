@@ -59,6 +59,14 @@ const auth = {
       } else {
         return res.error
       }
+    },
+    async logout({ commit }) {
+      const userData = {
+        token: '',
+        username: '',
+        updateStorage: true
+      }
+      await commit('setUserData', userData)
     }
   }
 }

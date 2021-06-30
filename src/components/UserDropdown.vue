@@ -24,8 +24,17 @@ export default {
   name: 'UserDropdown',
   components: {},
   methods: {
-    handleCommand(command) {
-      this.$message.info(`Dropdown: ${command}`)
+    async handleCommand(command) {
+      switch (command) {
+        case 'settings':
+          this.$router.push('/settings')
+          break
+        case 'logout':
+          this.$store.dispatch('auth/logout')
+          await new Promise(resolve => { setTimeout(resolve, 300) }) // eye candy
+          this.$router.push('/login')
+          break
+      }
     }
   }
 }
