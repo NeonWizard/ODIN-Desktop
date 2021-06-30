@@ -2,9 +2,12 @@ import {
   fetchServerStatus
 } from '@/store/apiModules/common.api'
 
+import isElectron from 'is-electron'
+
 function initialState() {
   return {
-    serverOnline: true,
+    isElectron: isElectron(),
+    serverOnline: true
   }
 }
 
@@ -17,8 +20,8 @@ const common = {
     }
   },
   actions: {
-    async fetchServerStatus({ rootState, commit }) {
-      const res = await fetchServerStatus(rootState.auth.apiToken)
+    async fetchServerStatus({ commit }) {
+      const res = await fetchServerStatus()
       commit('setServerOnline', res.online)
     }
   }

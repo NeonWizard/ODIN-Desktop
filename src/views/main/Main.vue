@@ -12,7 +12,7 @@
 <script>
 import Header from '@/components/Header.vue'
 
-import isElectron from 'is-electron'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
@@ -20,9 +20,12 @@ export default {
     Header,
   },
   data() {
-    return {
-      isElectron: isElectron()
-    }
+    return {}
+  },
+  computed: {
+    ...mapState('common', [
+      'isElectron'
+    ])
   }
 }
 </script>

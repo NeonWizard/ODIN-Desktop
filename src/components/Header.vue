@@ -1,5 +1,5 @@
 <template>
-  <div id="header">
+  <div id="header" :class="{ 'header-rounded': !isElectron }">
     <AppInfo class="app-info" />
     <el-row id="header-row" type="flex">
       <!-- Center -->
@@ -45,12 +45,19 @@ import AppInfo from '@/components/AppInfo.vue'
 import Notifications from '@/components/Notifications.vue'
 import UserDropdown from '@/components/UserDropdown.vue'
 
+import { mapState } from 'vuex'
+
 export default {
   name: 'Header',
   components: {
     AppInfo,
     Notifications,
     UserDropdown
+  },
+  computed: {
+    ...mapState('common', [
+      'isElectron'
+    ])
   }
 }
 </script>
@@ -60,8 +67,10 @@ export default {
     display: flex;
     align-items: center;
     background-color: #1c1d1e;
-    border-radius: 20px 20px 0 0;
     padding: 18px 30px;
+  }
+  .header-rounded {
+    border-radius: 20px 20px 0 0;
   }
 
   .app-info {
