@@ -77,11 +77,13 @@ export default {
     }
 
     #right-side {
-      padding: 0px 10px;
-
       .grid-content {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
+
+        ::v-deep #notifications {
+          margin-right: 30px;
+        }
       }
     }
   }

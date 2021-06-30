@@ -39,8 +39,8 @@ export default {
   }
 
   #user-image {
-    width: 35px;
-    height: 35px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     margin-right: 20px;
   }
