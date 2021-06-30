@@ -1,5 +1,5 @@
 <template>
-  <div id="app-info">
+  <div id="app-info" @click="clicked">
     <div id="app-content">
       <img src="@/assets/logo.png" width="35" height="35">
       <div id="app-text">
@@ -14,6 +14,11 @@
 <script>
 export default {
   name: 'AppInfo',
+  methods: {
+    clicked() {
+      this.$message.info('App info was clicked.')
+    }
+  }
 }
 </script>
 
@@ -22,6 +27,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
 
     #app-content {
       display: flex;
