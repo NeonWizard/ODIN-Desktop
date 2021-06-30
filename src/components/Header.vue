@@ -3,7 +3,7 @@
     <AppInfo class="app-info" />
     <el-row id="header-row" type="flex">
       <!-- Center -->
-      <el-col id="link-nav" :span="16">
+      <el-col id="link-nav" :span="20">
         <div class="grid-content">
           <el-link class="link-nav-link" href="/" type="info">
             Home
@@ -18,7 +18,7 @@
       </el-col>
 
       <!-- Right Side -->
-      <el-col id="right-side" :span="6">
+      <el-col id="right-side" :span="4">
         <div class="grid-content">
           <Notifications />
           <UserDropdown />
@@ -77,8 +77,12 @@ export default {
     }
 
     #right-side {
-      display: flex;
-      justify-content: flex-end;
+      padding: 0px 10px;
+
+      .grid-content {
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 </style>
