@@ -1,8 +1,22 @@
 <template>
-  <div id="user-dropdown" @click="clicked">
-    <img id="user-image" src="https://avatars.githubusercontent.com/u/1355586">
-    <i class="el-icon-arrow-down" />
-  </div>
+  <el-dropdown
+    id="user-dropdown"
+    trigger="click"
+    @command="handleCommand"
+  >
+    <div>
+      <img id="user-image" src="https://avatars.githubusercontent.com/u/1355586">
+      <i class="el-icon-arrow-down" />
+    </div>
+    <el-dropdown-menu slot="dropdown">
+      <el-dropdown-item command="settings">
+        Settings
+      </el-dropdown-item>
+      <el-dropdown-item command="logout">
+        Logout
+      </el-dropdown-item>
+    </el-dropdown-menu>
+  </el-dropdown>
 </template>
 
 <script>
@@ -10,15 +24,15 @@ export default {
   name: 'UserDropdown',
   components: {},
   methods: {
-    clicked() {
-      this.$message.info('User dropdown clicked.')
+    handleCommand(command) {
+      this.$message.info(`Dropdown: ${command}`)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  #user-dropdown {
+  #user-dropdown > div {
     display: flex;
     align-items: center;
     cursor: pointer;
