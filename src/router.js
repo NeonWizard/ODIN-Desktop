@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 // -- Routes
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     meta: { requiresAuth: true },
     component: () => import('@/views/Home.vue')
@@ -21,7 +21,7 @@ const routes = [
   {
     path: '*',
     name: 'not-found',
-    redirect: '/'
+    redirect: '/home'
   }
 ]
 // -- End of Routes
