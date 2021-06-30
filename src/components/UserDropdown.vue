@@ -5,7 +5,7 @@
     @command="handleCommand"
   >
     <div>
-      <img id="user-image" src="https://avatars.githubusercontent.com/u/1355586">
+      <img id="user-image" src="https://avatars.githubusercontent.com/u/1355586?s=32">
       <i class="el-icon-arrow-down" />
     </div>
     <el-dropdown-menu slot="dropdown">
