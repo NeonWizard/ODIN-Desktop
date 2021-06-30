@@ -16,6 +16,11 @@ import { mapState } from 'vuex'
 export default {
   name: 'Notifications',
   components: {},
+  data() {
+    return {
+
+    }
+  },
   computed: {
     ...mapState('notifications', [
       'pendingNotifications'
@@ -23,11 +28,6 @@ export default {
   },
   async created() {
     // await this.$store.dispatch('notifications/fetchPending')
-  },
-  data() {
-    return {
-
-    }
   },
   methods: {
     clicked() {
