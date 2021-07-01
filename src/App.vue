@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-loading="loading">
     <router-view v-if="serverOnline" />
     <AppOutage v-else />
   </div>
@@ -15,13 +15,23 @@ export default {
   components: {
     AppOutage
   },
+  data() {
+    return {
+      loading: false,
+    }
+  },
   computed: {
     ...mapState('common', [
       'serverOnline'
     ])
   },
-  async created() {
+  async mounted() {
+    this.loading = true
+
+    // Vuex fetchers that run once upon loading the application
     await this.$store.dispatch('common/fetchServerStatus')
+
+    this.loading = false
   }
 }
 </script>
