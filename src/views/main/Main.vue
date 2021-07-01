@@ -65,12 +65,12 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: #171819;
+    background-color: $secondary-background;
     color: $primary-color;
   }
 
   #app-body {
     flex: 1;
-    padding: 30px;
+    padding: 28px;
   }
 </style>

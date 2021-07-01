@@ -66,7 +66,7 @@ export default {
   #header {
     display: flex;
     align-items: center;
-    background-color: #1c1d1e;
+    background-color: $primary-background;
     padding: 18px 30px;
   }
   .header-rounded {
