@@ -14,17 +14,17 @@
           </a>
           <a
             class="link-nav-link"
+            :class="{ 'link-nav-link-selected': $route.path === '/models' }"
+            @click="$router.push('/models')"
+          >
+            Models
+          </a>
+          <a
+            class="link-nav-link"
             :class="{ 'link-nav-link-selected': $route.path === '/settings' }"
             @click="$router.push('/settings')"
           >
             Settings
-          </a>
-          <a
-            class="link-nav-link"
-            :class="{ 'link-nav-link-selected': $route.path === '/help' }"
-            @click="$router.push('/help')"
-          >
-            Help
           </a>
         </div>
       </el-col>

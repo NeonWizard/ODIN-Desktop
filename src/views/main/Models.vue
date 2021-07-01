@@ -1,12 +1,12 @@
 <template>
   <div class="secondary-color">
-    This is the <span class="primary-color">Help page</span>. This is some body text.
+    This is the <span class="primary-color">Models page</span>. This is some body text.
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Help',
+  name: 'Models',
   components: {},
   data() {
     return {

@@ -21,14 +21,14 @@ const routes = [
         component: () => import('@/views/main/Home.vue')
       },
       {
+        path: 'models',
+        name: 'models',
+        component: () => import('@/views/main/Models.vue')
+      },
+      {
         path: 'settings',
         name: 'settings',
         component: () => import('@/views/main/Settings.vue')
-      },
-      {
-        path: 'help',
-        name: 'help',
-        component: () => import('@/views/main/Help.vue')
       }
     ]
   },
