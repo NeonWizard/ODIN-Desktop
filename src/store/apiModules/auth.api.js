@@ -1,7 +1,7 @@
 import { createAxiosInstance } from '@/plugins/axios'
 
-const checkIsAuthenticated = async (apiToken) => {
-  const axios = createAxiosInstance(apiToken)
+const checkIsAuthenticated = async (userToken) => {
+  const axios = createAxiosInstance(userToken)
   try {
     const response = await axios.get('/isAuthenticated')
     if (response && response.data) {
@@ -15,8 +15,8 @@ const checkIsAuthenticated = async (apiToken) => {
   }
 }
 
-const loginUser = async (apiToken, credentials) => {
-  const axios = createAxiosInstance(apiToken)
+const loginUser = async (userToken, credentials) => {
+  const axios = createAxiosInstance(userToken)
   try {
     const response = await axios.post('/auth', credentials)
     if (response && response.data) {

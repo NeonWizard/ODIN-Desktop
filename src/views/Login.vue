@@ -94,13 +94,13 @@ export default {
       this.loading = true
 
       await new Promise(resolve => { setTimeout(resolve, 300) }) // eye candy
-      const error = await this.$store.dispatch('auth/login', {
+      const res = await this.$store.dispatch('auth/login', {
         username: this.model.username,
         password: this.model.password
       })
 
-      if (error) {
-        this.$message.error(error)
+      if (res.error) {
+        this.$message.error(res.error)
       } else {
         if (this.$route.query?.redirect) {
           this.$router.push({ path: this.$route.query.redirect })

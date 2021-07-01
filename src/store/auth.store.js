@@ -5,9 +5,9 @@ import {
 
 function initialState() {
   return {
-    apiToken: '',
-    isSignedIn: false,
-    username: '',
+    isAuthenticated: false,
+    username: localStorage.getItem('Username') ?? '',
+    userToken: localStorage.getItem('UserToken') ?? '',
   }
 }
 
@@ -15,58 +15,50 @@ const auth = {
   namespaced: true,
   state: initialState,
   mutations: {
+    setIsAuthenticated(state, value) {
+      state.isAuthenticated = value
+    },
     setUserData(state, value) {
-      state.apiToken = value.token
+      state.userToken = value.token
       state.username = value.username
-      state.isSignedIn = value.token !== ''
 
-      if (value.updateStorage === true) {
-        localStorage.setItem('UserToken', value.token)
-        localStorage.setItem('Username', value.username)
-      }
+      localStorage.setItem('UserToken', value.token)
+      localStorage.setItem('Username', value.username)
     }
   },
   actions: {
     async checkIsAuthenticated({ state, commit }) {
-      const userData = {
-        token: '',
-        username: '',
-        updateStorage: true
-      }
-
-      const userToken = localStorage.getItem('UserToken')
-      if (userToken && userToken !== '') {
-        const res = await checkIsAuthenticated(userToken)
+      if (state.userToken && state.userToken !== '') {
+        const res = await checkIsAuthenticated(state.userToken)
         if (res && !res.error) {
-          userData.token = userToken
-          userData.username = localStorage.getItem('Username')
+          commit('setIsAuthenticated', true)
         }
+      } else {
+        commit('setIsAuthenticated', false)
       }
-
-      commit('setUserData', userData)
-      return state.isSignedIn
+      return state.isAuthenticated
     },
+
     async login({ rootState, commit }, credentials) {
-      const res = await loginUser(rootState.auth.apiToken, credentials)
+      const res = await loginUser(rootState.auth.userToken, credentials)
       if (res && !res.error) {
         const userData = {
           token: res.token,
-          username: credentials.username,
-          updateStorage: true
+          username: credentials.username
         }
-        await commit('setUserData', userData)
-        return null
+        commit('setUserData', userData)
+        return {}
       } else {
-        return res.error
+        return { error: res.error }
       }
     },
+
     async logout({ commit }) {
       const userData = {
         token: '',
-        username: '',
-        updateStorage: true
+        username: ''
       }
-      await commit('setUserData', userData)
+      commit('setUserData', userData)
     }
   }
 }

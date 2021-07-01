@@ -1,7 +1,7 @@
 import { createAxiosInstance } from '@/plugins/axios'
 
-const fetchServerStatus = async (apiToken) => {
-  const axios = createAxiosInstance(apiToken)
+const fetchServerStatus = async (userToken) => {
+  const axios = createAxiosInstance(userToken)
   try {
     const response = await axios.get('/ping')
     if (response && response.data) {

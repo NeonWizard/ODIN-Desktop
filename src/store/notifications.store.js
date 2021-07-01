@@ -21,7 +21,7 @@ const notifications = {
   },
   actions: {
     async fetchPending({ rootState, commit }) {
-      const res = await fetchPendingNotifications(rootState.auth.apiToken)
+      const res = await fetchPendingNotifications(rootState.auth.userToken)
       await commit('setPendingNotifications', res ?? [])
     }
   }
