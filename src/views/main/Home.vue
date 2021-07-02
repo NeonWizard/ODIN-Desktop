@@ -1,7 +1,12 @@
 <template>
-  <el-row>
+  <el-row v-if="models && models.length > 0">
     <el-col id="sidebar" :span="5">
-      <el-card class="box-card" />
+      <el-card class="box-card">
+        <ModelListNavbar
+          :activeModel.sync="activeModel"
+          :models="models"
+        />
+      </el-card>
     </el-col>
     <el-col id="main-body" :span="19">
       <el-row id="input-zone">
@@ -19,15 +24,35 @@
       </el-row>
     </el-col>
   </el-row>
+  <div v-else>
+    We're sorry, the ODIN backend doesn't currently have any available models.
+  </div>
 </template>
 
 <script>
+import ModelListNavbar from '@/components/ModelListNavbar.vue'
+
+import { mapState } from 'vuex'
+
 export default {
   name: 'Home',
-  components: {},
+  components: {
+    ModelListNavbar
+  },
   data() {
     return {
+      activeModel: '',
     }
+  },
+  computed: {
+    ...mapState('models', [
+      'models'
+    ])
+  },
+  async created() {
+    await this.$store.dispatch('models/fetchModels')
+
+    this.activeModel = this.models[0]?.name
   }
 }
 </script>
