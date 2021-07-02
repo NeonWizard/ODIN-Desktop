@@ -1,8 +1,7 @@
-import { rest } from 'msw'
-import { baseURL } from '@/plugins/axios.js'
+import { rest } from '@/plugins/msw'
 
 export default [
-  rest.get(`${baseURL}/models`, (req, res, ctx) => {
+  rest.get('/models', (req, res, ctx) => {
     const response = {
       models: [
         {
@@ -15,5 +14,9 @@ export default [
     }
 
     return res(ctx.status(200), ctx.json(response))
+  }),
+
+  rest.get('/isAuthenticated', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({}))
   })
 ]
