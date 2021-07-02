@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let baseURL = `https://odin.deadtired.me/api`;
+export const baseURL = `https://odin.deadtired.me/api`;
 
 export const createAxiosInstance = token => axios.create({
   baseURL: baseURL,

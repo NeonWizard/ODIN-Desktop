@@ -13,6 +13,11 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI, { locale: elementLocale })
 
+if (process.env.VUE_APP_USE_MOCK === 'true') {
+  const { worker } = require('@/mock/browser')
+  worker.start({ onUnhandledRequest: 'bypass' })
+}
+
 new Vue({
   render: h => h(App),
   router,
