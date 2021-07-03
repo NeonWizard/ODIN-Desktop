@@ -11,7 +11,7 @@
       <el-form-item label="Length">
         <el-input-number
           v-model="form.length"
-          size="small"
+          size="mini"
           :min="1"
           :max="16384"
         />
@@ -19,13 +19,13 @@
       <el-form-item label="Truncate">
         <el-input
           v-model="form.truncate"
-          size="small"
+          size="mini"
         />
       </el-form-item>
       <el-form-item label="Prefix">
         <el-input
           v-model="form.prefix"
-          size="small"
+          size="mini"
           type="textarea"
         />
       </el-form-item>
@@ -39,7 +39,7 @@
       <el-form-item label="Temperature">
         <el-input-number
           v-model="form.temperature"
-          size="small"
+          size="mini"
           :precision="2"
           :step="0.1"
           :min="0"
@@ -49,14 +49,14 @@
       <el-form-item label="Top K">
         <el-input-number
           v-model="form.top_k"
-          size="small"
+          size="mini"
           :min="0"
         />
       </el-form-item>
       <el-form-item label="Top P">
         <el-input-number
           v-model="form.top_p"
-          size="small"
+          size="mini"
           :precision="2"
           :step="0.1"
           :min="0"
@@ -66,21 +66,22 @@
       <el-form-item label="Include prefix">
         <el-switch
           v-model="form.include_prefix"
-          size="small"
+          size="mini"
         />
       </el-form-item>
       <el-form-item label="N samples">
         <el-input-number
           v-model="form.n_samples"
-          size="small"
+          size="mini"
           :min="1"
           :max="8"
+          :disabled="form.seed !== ''"
         />
       </el-form-item>
       <el-form-item label="Batch size" prop="batch_size">
         <el-input-number
           v-model="form.batch_size"
-          size="small"
+          size="mini"
           :min="1"
           :max="8"
         />
@@ -131,4 +132,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+::v-deep .el-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+::v-deep .el-form-item {
+  max-width: 50%;
+}
 </style>
