@@ -11,7 +11,9 @@
     <el-col id="main-body" :span="19">
       <el-row id="input-zone">
         <el-col id="configuration-zone" :span="18">
-          <el-card class="box-card" />
+          <el-card class="box-card">
+            <GenerationConfiguration />
+          </el-card>
         </el-col>
         <el-col id="misc-zone" :span="6">
           <el-card class="box-card" />
@@ -31,13 +33,15 @@
 
 <script>
 import ModelListNavbar from '@/components/ModelListNavbar.vue'
+import GenerationConfiguration from '@/components/GenerationConfiguration.vue'
 
 import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
   components: {
-    ModelListNavbar
+    ModelListNavbar,
+    GenerationConfiguration
   },
   data() {
     return {
