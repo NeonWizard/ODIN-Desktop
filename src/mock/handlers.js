@@ -9,7 +9,7 @@ export default [
     return res(ctx.status(200), ctx.json({}))
   }),
 
-  rest.get('/auth', (req, res, ctx) => {
+  rest.post('/auth', (req, res, ctx) => {
     const response = {
       token: 'swaggybepo'
     }
