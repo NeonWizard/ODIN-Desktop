@@ -1,6 +1,7 @@
 <template>
   <div id="generation-configuration">
     <el-form
+      ref="form"
       :model="form"
       label-position="right"
       label-width="100px"
@@ -29,11 +30,10 @@
         />
       </el-form-item>
       <el-form-item label="Seed">
-        <el-input-number
-          v-model="form.seed"
-          size="small"
-          :min="0"
-          :max="4294967295"
+        <el-input
+          v-model.number="form.seed"
+          type="text"
+          size="mini"
         />
       </el-form-item>
       <el-form-item label="Temperature">
@@ -77,7 +77,7 @@
           :max="8"
         />
       </el-form-item>
-      <el-form-item label="Batch size">
+      <el-form-item label="Batch size" prop="batch_size">
         <el-input-number
           v-model="form.batch_size"
           size="small"
@@ -98,7 +98,7 @@ export default {
         length: 32,
         truncate: '',
         prefix: '',
-        seed: null,
+        seed: '',
         temperature: 0.7,
         top_k: 0,
         top_p: 0.0,
@@ -110,22 +110,20 @@ export default {
         batch_size: [{
           validator: (rule, val, cb) => {
             if (this.form.n_samples % val !== 0) {
-              cb(new Error('Batch size must be able to divide n_samples.'))
+              cb(new Error('Batch size must be able to divide n_samples'))
             } else {
               cb()
             }
           },
-          trigger: 'blur'
-        }],
-        n_samples: [{
-          validator: (rule, val, cb) => {
-            if (this.form.seed !== null) {
-              cb(new Error('Only one sample may be generated if the seed property is set.'))
-            } else {
-              cb()
-            }
-          }
+          trigger: 'change'
         }]
+      }
+    }
+  },
+  watch: {
+    'form.seed': function(val) {
+      if (val !== '') {
+        this.form.n_samples = 1
       }
     }
   }
