@@ -1,5 +1,6 @@
 import {
-  fetchModels
+  fetchModels,
+  generate
 } from '@/store/apiModules/models.api'
 
 function initialState() {
@@ -20,6 +21,11 @@ const common = {
     async fetchModels({ rootState, commit }) {
       const res = await fetchModels(rootState.auth.userToken)
       commit('setModels', res.models ?? [])
+    },
+
+    async generate({ rootState }, modelName, body) {
+      const res = await generate(rootState.auth.userToken, modelName, body)
+      return res
     }
   }
 }

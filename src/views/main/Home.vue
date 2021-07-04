@@ -67,10 +67,11 @@ export default {
     this.activeModel = this.models[0]?.name
   },
   methods: {
-    generate(form) {
+    async generate(form) {
       form.prefix = this.prefix
 
-      // TODO: store dispatch
+      const res = await this.$store.dispatch('models/generate', this.activeModel, form)
+      console.log(res.data)
     }
   }
 }
