@@ -27,7 +27,13 @@
       </el-row>
       <el-row id="output-zone">
         <el-col id="output-box" :span="24">
-          <el-card class="box-card" />
+          <el-card class="box-card">
+            <el-input
+              v-model="generatedText"
+              type="textarea"
+              readonly
+            />
+          </el-card>
         </el-col>
       </el-row>
     </el-col>
@@ -53,6 +59,7 @@ export default {
     return {
       activeModel: '',
       form: {},
+      generatedText: '',
       prefix: '',
     }
   },
@@ -77,9 +84,11 @@ export default {
       })
 
       const res = await this.$store.dispatch('models/generate', this.activeModel, form)
-      console.log(res.data)
+      this.generatedText = res.data
 
-      await new Promise(resolve => { setTimeout(resolve, 1500) }) // eye candy
+      if (this.VUE_APP_USE_MOCK) {
+        await new Promise(resolve => { setTimeout(resolve, 1500) }) // eye candy
+      }
 
       loading.close()
     }
