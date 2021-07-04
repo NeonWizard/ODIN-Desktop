@@ -70,8 +70,18 @@ export default {
     async generate(form) {
       form.prefix = this.prefix
 
+      const loading = this.$loading({
+        lock: true,
+        background: 'rgba(0, 0, 0, 0.8)',
+        target: '#app-page'
+      })
+
       const res = await this.$store.dispatch('models/generate', this.activeModel, form)
       console.log(res.data)
+
+      await new Promise(resolve => { setTimeout(resolve, 1500) }) // eye candy
+
+      loading.close()
     }
   }
 }
