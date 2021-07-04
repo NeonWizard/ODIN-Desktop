@@ -22,13 +22,6 @@
           size="mini"
         />
       </el-form-item>
-      <el-form-item label="Prefix">
-        <el-input
-          v-model="form.prefix"
-          size="mini"
-          type="textarea"
-        />
-      </el-form-item>
       <el-form-item label="Seed">
         <el-input
           v-model.number="form.seed"
@@ -86,6 +79,18 @@
           :max="8"
         />
       </el-form-item>
+      <el-form-item>
+        <el-popconfirm
+          title="Are you sure? Generation may take several minutes."
+          confirm-button-text="OK"
+          icon-color="red"
+          @confirm="submitForm"
+        >
+          <el-button slot="reference" type="primary">
+            Generate
+          </el-button>
+        </el-popconfirm>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -98,7 +103,6 @@ export default {
       form: {
         length: 32,
         truncate: '',
-        prefix: '',
         seed: '',
         temperature: 0.7,
         top_k: 0,
@@ -126,6 +130,18 @@ export default {
       if (val !== '') {
         this.form.n_samples = 1
       }
+    }
+  },
+  methods: {
+    submitForm() {
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          this.$emit('submit', this.form)
+          return true
+        } else {
+          return false
+        }
+      })
     }
   }
 }

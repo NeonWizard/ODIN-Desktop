@@ -12,11 +12,17 @@
       <el-row id="input-zone">
         <el-col id="configuration-zone" :span="18">
           <el-card class="box-card">
-            <GenerationConfiguration />
+            <GenerationConfiguration @submit="generate" />
           </el-card>
         </el-col>
         <el-col id="misc-zone" :span="6">
-          <el-card class="box-card" />
+          <el-card class="box-card">
+            <el-input
+              id="prefix-input"
+              v-model="prefix"
+              type="textarea"
+            />
+          </el-card>
         </el-col>
       </el-row>
       <el-row id="output-zone">
@@ -46,6 +52,8 @@ export default {
   data() {
     return {
       activeModel: '',
+      form: {},
+      prefix: '',
     }
   },
   computed: {
@@ -57,6 +65,13 @@ export default {
     await this.$store.dispatch('models/fetchModels')
 
     this.activeModel = this.models[0]?.name
+  },
+  methods: {
+    generate(form) {
+      form.prefix = this.prefix
+
+      // TODO: store dispatch
+    }
   }
 }
 </script>
@@ -72,7 +87,7 @@ export default {
     padding-left: 11px;
 
     #input-zone {
-      height: 35%;
+      height: 40%;
 
       #configuration-zone {
         height: 100%;
@@ -82,12 +97,16 @@ export default {
       #misc-zone {
         height: 100%;
         padding-left: 11px;
+
+        ::v-deep #prefix-input {
+          height: 100%;
+        }
       }
     }
 
     #output-zone {
       padding-top: 22px;
-      height: 65%;
+      height: 60%;
 
       #output-box {
         height: 100%;
