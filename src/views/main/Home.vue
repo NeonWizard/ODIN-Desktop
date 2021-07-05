@@ -102,7 +102,8 @@ export default {
       if (!res) {
         this.$message.error('There was an error during generation.')
       } else {
-        this.generatedText = res.data
+        // TODO: Separate multiple generations into multiple cards
+        this.generatedText = res.data.join('\n----------\n')
       }
 
       loading.close()
