@@ -86,7 +86,11 @@
           icon-color="red"
           @confirm="submitForm"
         >
-          <el-button slot="reference" type="primary">
+          <el-button
+            slot="reference"
+            type="primary"
+            :disabled="disabled"
+          >
             Generate
           </el-button>
         </el-popconfirm>
@@ -98,6 +102,13 @@
 <script>
 export default {
   name: 'GenerationConfiguration',
+  props: {
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false,
+    }
+  },
   data() {
     return {
       form: {

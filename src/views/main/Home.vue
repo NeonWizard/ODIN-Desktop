@@ -12,7 +12,10 @@
       <el-row id="input-zone">
         <el-col id="configuration-zone" :span="18">
           <el-card class="box-card">
-            <GenerationConfiguration @submit="generate" />
+            <GenerationConfiguration
+              :disabled="activeModel === ''"
+              @submit="generate"
+            />
           </el-card>
         </el-col>
         <el-col id="misc-zone" :span="6">
