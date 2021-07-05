@@ -76,15 +76,18 @@ export default {
   },
   methods: {
     async generate(form) {
-      form.prefix = this.prefix
-
       const loading = this.$loading({
         lock: true,
         background: 'rgba(0, 0, 0, 0.8)',
         target: '#app-page'
       })
 
-      const res = await this.$store.dispatch('models/generate', this.activeModel, form)
+      const payload = {
+        body: form,
+        modelName: this.activeModel
+      }
+
+      const res = await this.$store.dispatch('models/generate', payload)
       this.generatedText = res.data
 
       if (this.VUE_APP_USE_MOCK) {

@@ -23,8 +23,8 @@ const common = {
       commit('setModels', res.models ?? [])
     },
 
-    async generate({ rootState }, modelName, body) {
-      const res = await generate(rootState.auth.userToken, modelName, body)
+    async generate({ rootState }, payload) {
+      const res = await generate(rootState.auth.userToken, payload.modelName, payload.body)
       return res
     }
   }
