@@ -5,11 +5,11 @@
       <!-- TODO: make these individual cards -->
       <div
         v-for="model in models"
-        :key="model.name"
-        :class="{ 'model-selected': model.name === activeModel }"
+        :key="model"
+        :class="{ 'model-selected': model === activeModel }"
         @click="clicked(model)"
       >
-        {{ model.name }}
+        {{ model }}
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     clicked(model) {
-      this.$emit('update:activeModel', model.name)
+      this.$emit('update:activeModel', model)
     }
   }
 }

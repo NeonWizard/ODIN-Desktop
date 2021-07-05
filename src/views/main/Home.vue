@@ -70,8 +70,6 @@ export default {
   },
   async created() {
     await this.$store.dispatch('models/fetchModels')
-
-    this.activeModel = this.models[0]?.name
   },
   methods: {
     async generate(form) {

@@ -22,15 +22,9 @@ export default [
   rest.get('/models', (req, res, ctx) => {
     const response = {
       models: [
-        {
-          name: 'test'
-        },
-        {
-          name: 'swaggy-bepo'
-        },
-        {
-          name: 'noggle'
-        }
+        'test',
+        'swaggy-bepo',
+        'noggle'
       ]
     }
 
