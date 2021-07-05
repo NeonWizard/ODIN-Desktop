@@ -68,7 +68,7 @@
           size="mini"
           :min="1"
           :max="8"
-          :disabled="form.seed !== ''"
+          :disabled="!!form.seed"
         />
       </el-form-item>
       <el-form-item label="Batch size" prop="batch_size">
