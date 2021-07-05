@@ -113,8 +113,8 @@ export default {
     return {
       form: {
         length: 32,
-        truncate: '',
-        seed: '',
+        truncate: null,
+        seed: null,
         temperature: 0.7,
         top_k: 0,
         top_p: 0.0,
@@ -138,8 +138,15 @@ export default {
   },
   watch: {
     'form.seed': function(val) {
-      if (val !== '') {
+      if (val) {
         this.form.n_samples = 1
+      } else if (val === '') {
+        this.form.seed = null
+      }
+    },
+    'form.truncate': function(val) {
+      if (val === '') {
+        this.form.truncate = null
       }
     }
   },

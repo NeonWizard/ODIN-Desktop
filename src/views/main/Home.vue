@@ -63,13 +63,20 @@ export default {
       activeModel: '',
       form: {},
       generatedText: '',
-      prefix: '',
+      prefix: null,
     }
   },
   computed: {
     ...mapState('models', [
       'models'
     ])
+  },
+  watch: {
+    prefix(val) {
+      if (val === '') {
+        this.prefix = null
+      }
+    }
   },
   async created() {
     await this.$store.dispatch('models/fetchModels')
