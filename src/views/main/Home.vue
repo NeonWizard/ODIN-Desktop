@@ -94,11 +94,15 @@ export default {
         modelName: this.activeModel
       }
 
-      const res = await this.$store.dispatch('models/generate', payload)
-      this.generatedText = res.data
-
       if (this.VUE_APP_USE_MOCK) {
         await new Promise(resolve => { setTimeout(resolve, 1500) }) // eye candy
+      }
+
+      const res = await this.$store.dispatch('models/generate', payload)
+      if (!res) {
+        this.$message.error('There was an error during generation.')
+      } else {
+        this.generatedText = res.data
       }
 
       loading.close()
